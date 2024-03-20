@@ -55,6 +55,11 @@ The main program reads the initial DNA sequence, simulates the specified number 
 
 - generations_plot.txt - The file where population percentages are saved after each generation.
 
+- popmod_fast.pl - A version that will run full speed.
+
+- plotPop.sh - A bash script that will plot population in terminal. Uses gnuplot. To view over time, combine with watch as: 
+    
+    watch bash plotPops.sh 
 
 == AUTHOR
 
