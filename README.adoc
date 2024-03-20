@@ -61,6 +61,8 @@ The main program reads the initial DNA sequence, simulates the specified number 
     
     watch bash plotPops.sh 
 
+image::example_plot.png[Plot]
+
 == AUTHOR
 
 Andy Richardson - This script was created as an educational tool to demonstrate basic principles of genetics and evolution through programming.
