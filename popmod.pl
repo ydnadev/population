@@ -6,11 +6,11 @@ use Term::ANSIColor;
 
 =head1 NAME
 
-DNA Evolution Simulator - Simulates the evolution of a DNA sequence over generations based on simplified mutation rules.
+Popmod - Simulates the evolution of a DNA sequence over generations based on simplified mutation rules.
 
 =head1 SYNOPSIS
 
-perl dna_evolution_simulator.pl [NUMBER OF GENERATIONS]
+perl popmod.pl [NUMBER OF GENERATIONS]
 
 =head1 DESCRIPTION
 
