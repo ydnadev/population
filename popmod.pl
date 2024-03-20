@@ -1,8 +1,77 @@
 #! /usr/bin/perl
 
-# use warnings;
+use warnings;
 use strict;
 use Term::ANSIColor;
+
+=head1 NAME
+
+DNA Evolution Simulator - Simulates the evolution of a DNA sequence over generations based on simplified mutation rules.
+
+=head1 SYNOPSIS
+
+perl dna_evolution_simulator.pl [NUMBER OF GENERATIONS]
+
+=head1 DESCRIPTION
+
+This script simulates the evolutionary process of a DNA sequence by applying simplified mutation rules to a population represented by four types of elements (1-4), mimicking the nucleic acids in DNA (Adenine, Cytosine, Guanine, Thymine). The simulation runs for a specified number of generations, with each generation potentially introducing mutations based on predefined rules and random selection pressures.
+
+=head1 USAGE
+
+Prepare a file named "population.txt" containing the initial DNA sequence, where each character is a number from 1 to 4 representing a nucleotide. Run the script by providing the desired number of generations as a command-line argument.
+
+Example:
+
+    perl dna_evolution_simulator.pl 10
+
+=head1 FUNCTIONS
+
+=head2 Main Program
+
+The main program reads the initial DNA sequence, simulates the specified number of generations applying mutation rules, and prints the evolution of the sequence along with the final proportions of each nucleotide type.
+
+=head2 Mutation Rules
+
+=over 4
+
+=item * If a nucleotide is 1 and its previous neighbor was 1, it remains 1.
+
+=item * If a nucleotide is 1 and its previous neighbor was not 1, it becomes 2.
+
+=item * A nucleotide 2 always becomes 3.
+
+=item * A nucleotide 3 always becomes 4.
+
+=item * If a nucleotide is 4 and its previous neighbor was 3, it becomes 2.
+
+=item * If a nucleotide is 4 and its previous neighbor was not 3, it becomes 1.
+
+=back
+
+=head1 FILES
+
+=over 4
+
+=item * population.txt - The initial DNA sequence.
+
+=item * generations_plot.txt - The file where population percentages are saved after each generation.
+
+=back
+
+=head1 AUTHOR
+
+Andy Richardson - This script was created as an educational tool to demonstrate basic principles of genetics and evolution through programming.
+
+=head1 SEE ALSO
+
+Term::ANSIColor
+
+=head1 LICENSE
+
+This script is released under the MIT License.
+
+=cut
+
 
 # declared variables
 my $popul;
