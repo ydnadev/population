@@ -24,6 +24,16 @@ Example:
 
     perl dna_evolution_simulator.pl 10
 
+Output Columns: 
+
+    Selection Pressure (Pt Mutation)
+    Population (Nuceotides)
+    Generation
+    Pct 1
+    Pct 2
+    Pct 3
+    Pct 4
+
 =head1 FUNCTIONS
 
 =head2 Main Program
