@@ -84,7 +84,8 @@ This script is released under the MIT License.
 
 # declared variables
 my $popul;
-my $generation = @ARGV[0];
+my $final_pop;
+my $generation = $ARGV[0];
 my $element;
 my $prevelement;
 my $last=0;
@@ -111,6 +112,8 @@ print "parental gen = @populate\n";
 ### file to save population percentages to,
 # will be used by bash script to run gnuplot
 my $genPlot = "generations_plot.txt";
+
+my $saturation = "population_at_saturation.txt";
 
 ### generation loop
 for (my $i=0;$i<$generation;$i++)
@@ -170,11 +173,11 @@ for (my $i=0;$i<$generation;$i++)
                 }
             }
 
-# if element is 2, keep 2
+# if element is 2, set element to 3
             elsif($element == 2)
             {
                 print color('bold green');
-                print "2";
+                print "3";
                 print color('reset');
                 push @pop2,"3";
             }
@@ -193,7 +196,7 @@ for (my $i=0;$i<$generation;$i++)
             {
                 if ($prevelement == 3)
                 {
-                    print color('bold green');
+                    print color('bold yellow');
                     print "2";
                     print color('reset');
                     push @pop2,"2";
@@ -246,6 +249,13 @@ for (my $i=0;$i<$generation;$i++)
 
     @populate=@pop2;
     my $checker = join('',@pop2);
+    if ($checker eq "1111111111111111111111111111111111111111111111111111111111"){
+        $final_pop = $i;
+        open (SAT,">>$saturation");
+        print SAT "$final_pop\n";
+        close SAT;
+        last;
+    }
     my ($one,$two,$three,$four) = (0,0,0,0);
     my ($onerat,$tworat,$threerat,$fourrat) = (0,0,0,0);
     for $_(@pop2)
@@ -278,9 +288,9 @@ for (my $i=0;$i<$generation;$i++)
     $last = $i + 1;
     print "$last";
     print "\t$onerat";
-    open (GENPLOT,">$genPlot");
-    print GENPLOT "$onerat\n$tworat\n$threerat\n$fourrat\n";
-    close GENPLOT;
+    #open (GENPLOT,">$genPlot");
+    #print GENPLOT "$onerat\n$tworat\n$threerat\n$fourrat\n";
+    #close GENPLOT;
     print "\t$tworat";
     print "\t$threerat";
     print "\t$fourrat";
@@ -302,6 +312,7 @@ $tworatavg = sprintf("%.2f",$tworatavg/$generation);
 $threeratavg = sprintf("%.2f",$threeratavg/$generation);
 $fourratavg = sprintf("%.2f",$fourratavg/$generation);
 print "$oneratavg\t$tworatavg\t$threeratavg\t$fourratavg\n";
+#print "Generation = " + $final_pop + "\n";
 #open (GENPLOT,">$genPlot");
 #print GENPLOT "$oneratavg\n$tworatavg\n$threeratavg\n$fourratavg\n";
 #close GENPLOT;
